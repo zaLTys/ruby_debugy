@@ -2,24 +2,19 @@
 
 class WikiPostsController < ApplicationController
   include LoggingModule
-<<<<<<< HEAD
   before_action :set_wiki_post, only: %i[edit update destroy]
-=======
   before_action :set_wiki_post, only: %i[show edit update destroy]
->>>>>>> psdeb2
 
   # GET /wiki_posts or /wiki_posts.json
   def index
     @wiki_posts = WikiPost.all
-<<<<<<< HEAD
     log_debug("WikiPosts Loaded - count: #{@wiki_posts.count}")
-=======
     log_debug("WikiPostsLoaded: #{@wiki_posts.count}")
->>>>>>> psdeb2
   end
 
   # GET /wiki_posts/1 or /wiki_posts/1.json
   def show
+    binding.debugger
     log_info("WikiPost viewed: #{@wiki_post.title}")
   end
 
@@ -77,13 +72,10 @@ class WikiPostsController < ApplicationController
   def set_wiki_post
     @wiki_post = WikiPost.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-<<<<<<< HEAD
     log_error("WikiPost not found - ID: #{params[:id]}")
     redirect_to wiki_posts_path, alert: 'WikiPost not found.'
-=======
     log_error("not found id - #{params[:id]}")
     redirect_to wiki_posts_path, alert: 'Wiki post not found.'
->>>>>>> psdeb2
   end
 
   # Only allow a list of trusted parameters through.
